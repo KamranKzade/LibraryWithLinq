@@ -9,6 +9,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ResouceDictionary/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="ResouceDictionary/RadionStyle.xaml"/>
+                <ResourceDictionary Source="ResouceDictionary/LabelStyle.xaml"/>
+                <ResourceDictionary Source="ResouceDictionary/TextboxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

@@ -1,5 +1,6 @@
 ﻿using LibraryWithLinq.DataAccess.SqlServer;
 using LibraryWithLinq.Models;
+using LibraryWithLinq.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,11 +41,14 @@ namespace LibraryWithLinq
 
                 if (result is 1)
                 {
-                    MessageBox.Show("Welcome");
+                    BooksWindow window= new BooksWindow(myId);
+                    window.ShowDialog();
+
+                    //MessageBox.Show("Welcome");
                 }
                 else
                 {
-                    MessageBox.Show("Giris olmadi");
+                    MessageBox.Show($"{firstname.Text} {lastname.Text} istifadeci movcud deyil");
                 }
 
             }
@@ -60,7 +64,7 @@ namespace LibraryWithLinq
                 }
                 else
                 {
-                    MessageBox.Show("Giris olmadi");
+                    MessageBox.Show($"{firstname.Text} {lastname.Text} istifadeci movcud deyil");
                 }
             }
 
@@ -75,7 +79,7 @@ namespace LibraryWithLinq
                 }
                 else
                 {
-                    MessageBox.Show("Giris olmadi");
+                    MessageBox.Show($"{firstname.Text} {lastname.Text} istifadeci movcud deyil");
                 }
             }
             else

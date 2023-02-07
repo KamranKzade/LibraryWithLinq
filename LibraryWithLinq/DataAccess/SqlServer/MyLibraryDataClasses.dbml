@@ -149,4 +149,9 @@
     <Parameter Name="result" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.CheckBookQuantity" Method="CheckBookQuantity">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="result" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

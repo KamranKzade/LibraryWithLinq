@@ -228,6 +228,14 @@ namespace LibraryWithLinq.DataAccess.SqlServer
 			result = ((System.Nullable<int>)(result1.GetParameterValue(3)));
 			return ((int)(result1.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CheckBookQuantity")]
+		public int CheckBookQuantity([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] ref System.Nullable<int> result)
+		{
+			IExecuteResult result1 = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, result);
+			result = ((System.Nullable<int>)(result1.GetParameterValue(1)));
+			return ((int)(result1.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Authors")]

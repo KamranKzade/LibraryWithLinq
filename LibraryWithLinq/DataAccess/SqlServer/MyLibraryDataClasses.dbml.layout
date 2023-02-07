@@ -136,7 +136,7 @@
         <classShapeMoniker Id="10a50b81-2f1c-4462-94e9-07dd2aa2333d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 3.43653746153846); (6.0625 : 2.87403746153846); (6.0625 : 1.73159912109375); (6.25 : 1.73159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 3.43653746153846); (5.81607443490112 : 3.12046302663734 : JumpStart); (5.93392556509888 : 3.00261189643958 : JumpEnd); (6.0625 : 2.87403746153846); (6.0625 : 1.73159912109375); (6.25 : 1.73159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MyLibraryDataClassesDataContext/Book/Book_T_Card" />
       <nodes>
         <classShapeMoniker Id="13fb2420-601a-4058-ba73-e5a6a35dde6e" />

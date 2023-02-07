@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:LibraryWithLinq.Views"
         mc:Ignorable="d"
         Title="BooksWindow"
-        Height="650"
+        Height="800"
         WindowStartupLocation="CenterScreen"
-        Width="700">
+        Width="900">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush>

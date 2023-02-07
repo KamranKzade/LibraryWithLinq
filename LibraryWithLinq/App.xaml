@@ -1,0 +1,16 @@
+﻿<Application x:Class="LibraryWithLinq.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:LibraryWithLinq"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResouceDictionary/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="ResouceDictionary/RadionStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

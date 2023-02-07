@@ -68,7 +68,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\BooksWindowForStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BuyBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BuyBookWindowForStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,8 +97,14 @@
     <Compile Include="Views\BooksWindow.xaml.cs">
       <DependentUpon>BooksWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BooksWindowForStudent.xaml.cs">
+      <DependentUpon>BooksWindowForStudent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BuyBookWindow.xaml.cs">
       <DependentUpon>BuyBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BuyBookWindowForStudent.xaml.cs">
+      <DependentUpon>BuyBookWindowForStudent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

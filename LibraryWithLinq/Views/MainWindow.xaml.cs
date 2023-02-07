@@ -1,20 +1,7 @@
 ﻿using LibraryWithLinq.DataAccess.SqlServer;
-using LibraryWithLinq.Models;
 using LibraryWithLinq.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryWithLinq
 {
@@ -41,10 +28,8 @@ namespace LibraryWithLinq
 
                 if (result is 1)
                 {
-                    BooksWindow window= new BooksWindow(myId);
+                    BooksWindow window = new BooksWindow(myId);
                     window.ShowDialog();
-
-                    //MessageBox.Show("Welcome");
                 }
                 else
                 {
@@ -60,7 +45,8 @@ namespace LibraryWithLinq
 
                 if (result is 1)
                 {
-                    MessageBox.Show("Welcome");
+                    BooksWindowForStudent window = new BooksWindowForStudent(myId);
+                    window.ShowDialog();
                 }
                 else
                 {

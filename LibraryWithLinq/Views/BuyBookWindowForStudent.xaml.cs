@@ -4,18 +4,22 @@ using System;
 using System.Linq;
 using System.Windows;
 
+
+
 namespace LibraryWithLinq.Views
 {
-
-    public partial class BuyBookWindow : Window
+    public partial class BuyBookWindowForStudent : Window
     {
-
         MyLibraryDataClassesDataContext dtx = new MyLibraryDataClassesDataContext();
-        int TeacherId, bookId;
+        int StudentId, BookId;
 
-        public BuyBookWindow(int teacherId, int BookId)
+
+        public BuyBookWindowForStudent(int studentId, int bookId)
         {
             InitializeComponent();
+
+            StudentId= studentId;
+            BookId= bookId;
 
 
             var result = from b in dtx.Books
@@ -30,19 +34,16 @@ namespace LibraryWithLinq.Views
 
             DateIn.Text = DateTime.Now.AddDays(4).ToString();
             pay_txt.Text = $"{(new Random().Next(0, 100) * 4)} Azn";
-
-            TeacherId = teacherId;
-            bookId = BookId;
-
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            dtx.T_Cards.InsertOnSubmit(new T_Card
+            dtx.S_Cards.InsertOnSubmit(new S_Card
             {
                 Id = new Random().Next(9, 100),
-                Id_Teacher = TeacherId,
-                Id_Book = bookId,
+                Id_Student = StudentId,
+                Id_Book = BookId,
                 DateOut = DateTime.Now,
                 DateIn = DateTime.Now.AddDays(4),
                 Id_Lib = 1

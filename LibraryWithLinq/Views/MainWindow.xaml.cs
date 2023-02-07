@@ -1,4 +1,5 @@
 ﻿using LibraryWithLinq.DataAccess.SqlServer;
+using LibraryWithLinq.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,6 @@ using System.Windows.Shapes;
 
 namespace LibraryWithLinq
 {
-
-
     public partial class MainWindow : Window
     {
         MyLibraryDataClassesDataContext ldc = new MyLibraryDataClassesDataContext();
@@ -32,18 +31,52 @@ namespace LibraryWithLinq
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            int myId = int.Parse(id.Text);
+
             if (teacher_radio.IsChecked == true)
             {
-                MessageBox.Show("Teacher");
+                int? result = null;
+                ldc.CheckTeacher(myId, firstname.Text, lastname.Text, ref result);
+
+                if (result is 1)
+                {
+                    MessageBox.Show("Welcome");
+                }
+                else
+                {
+                    MessageBox.Show("Giris olmadi");
+                }
+
             }
+
             else if (student_radio.IsChecked == true)
             {
-                MessageBox.Show("Student");
+                int? result = null;
+                ldc.CheckStudent(myId, firstname.Text, lastname.Text, ref result);
+
+                if (result is 1)
+                {
+                    MessageBox.Show("Welcome");
+                }
+                else
+                {
+                    MessageBox.Show("Giris olmadi");
+                }
             }
 
             else if (libs_radio.IsChecked == true)
             {
-                MessageBox.Show("Libs");
+                int? result = null;
+                ldc.CheckLibs(myId, firstname.Text, lastname.Text, ref result);
+
+                if (result is 1)
+                {
+                    MessageBox.Show("Welcome");
+                }
+                else
+                {
+                    MessageBox.Show("Giris olmadi");
+                }
             }
             else
             {

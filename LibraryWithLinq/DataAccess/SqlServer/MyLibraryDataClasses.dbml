@@ -128,4 +128,25 @@
       <Association Name="Theme_Book" Member="Books" ThisKey="Id" OtherKey="Id_Themes" Type="Book" />
     </Type>
   </Table>
+  <Function Name="dbo.CheckLibs" Method="CheckLibs">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="first" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="last" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="result" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckStudent" Method="CheckStudent">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="first" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="last" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="result" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckTeacher" Method="CheckTeacher">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="first" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="last" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="result" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

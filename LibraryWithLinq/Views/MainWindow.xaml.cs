@@ -1,7 +1,8 @@
-﻿using LibraryWithLinq.DataAccess.SqlServer;
-using LibraryWithLinq.Views;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
+using LibraryWithLinq.Views;
+using LibraryWithLinq.DataAccess.SqlServer;
+
 
 namespace LibraryWithLinq
 {
@@ -14,21 +15,28 @@ namespace LibraryWithLinq
             InitializeComponent();
         }
 
-        private void Minimize_Btn(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
         private void Close_Btn(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
+        private void Minimize_Btn(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
+
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             int myId = int.Parse(id.Text);
+            int? result = null;
 
+            // Teacher giris
             if (teacher_radio.IsChecked == true)
             {
-                int? result = null;
                 ldc.CheckTeacher(myId, firstname.Text, lastname.Text, ref result);
 
                 if (result is 1)
                 {
-                    BooksWindow window = new BooksWindow(myId);
+                    BooksWindow window = new BooksWindow(myId, true);
                     window.ShowDialog();
                 }
                 else
@@ -38,14 +46,14 @@ namespace LibraryWithLinq
 
             }
 
+            // Student Giris
             else if (student_radio.IsChecked == true)
             {
-                int? result = null;
                 ldc.CheckStudent(myId, firstname.Text, lastname.Text, ref result);
 
                 if (result is 1)
                 {
-                    BooksWindowForStudent window = new BooksWindowForStudent(myId);
+                    BooksWindow window = new BooksWindow(myId, false);
                     window.ShowDialog();
                 }
                 else
@@ -54,9 +62,9 @@ namespace LibraryWithLinq
                 }
             }
 
+            // Libs Giris
             else if (libs_radio.IsChecked == true)
             {
-                int? result = null;
                 ldc.CheckLibs(myId, firstname.Text, lastname.Text, ref result);
 
                 if (result is 1)
@@ -72,12 +80,6 @@ namespace LibraryWithLinq
             {
                 MessageBox.Show("Secimlerden Birini edin-> RadioButtonlardan");
             }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-                DragMove();
         }
     }
 }

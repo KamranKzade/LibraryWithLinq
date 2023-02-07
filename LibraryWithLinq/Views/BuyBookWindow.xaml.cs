@@ -1,22 +1,26 @@
-﻿using LibraryWithLinq.DataAccess.SqlServer;
-using LibraryWithLinq.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows;
+using LibraryWithLinq.Models;
+using LibraryWithLinq.DataAccess.SqlServer;
 
 namespace LibraryWithLinq.Views
 {
 
     public partial class BuyBookWindow : Window
     {
-
-        MyLibraryDataClassesDataContext dtx = new MyLibraryDataClassesDataContext();
+        bool HasTeacher;
         int TeacherId, bookId;
 
-        public BuyBookWindow(int teacherId, int BookId)
+        MyLibraryDataClassesDataContext dtx = new MyLibraryDataClassesDataContext();
+
+        public BuyBookWindow(int teacherId, int BookId, bool hasTeacher)
         {
             InitializeComponent();
 
+            TeacherId = teacherId;
+            bookId = BookId;
+            HasTeacher = hasTeacher;
 
             var result = from b in dtx.Books
                          join c in dtx.Categories on b.Id_Category equals c.Id
@@ -31,27 +35,41 @@ namespace LibraryWithLinq.Views
             DateIn.Text = DateTime.Now.AddDays(4).ToString();
             pay_txt.Text = $"{(new Random().Next(0, 100) * 4)} Azn";
 
-            TeacherId = teacherId;
-            bookId = BookId;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            dtx.T_Cards.InsertOnSubmit(new T_Card
+
+            if (HasTeacher)
             {
-                Id = new Random().Next(9, 100),
-                Id_Teacher = TeacherId,
-                Id_Book = bookId,
-                DateOut = DateTime.Now,
-                DateIn = DateTime.Now.AddDays(4),
-                Id_Lib = 1
-            });
+                dtx.T_Cards.InsertOnSubmit(new T_Card
+                {
+                    Id = new Random().Next(9, 100),
+                    Id_Teacher = TeacherId,
+                    Id_Book = bookId,
+                    DateOut = DateTime.Now,
+                    DateIn = DateTime.Now.AddDays(4),
+                    Id_Lib = 1
+                });
+            }
+            else
+            {
+                dtx.S_Cards.InsertOnSubmit(new S_Card
+                {
+                    Id = new Random().Next(9, 100),
+                    Id_Student = TeacherId,
+                    Id_Book = bookId,
+                    DateOut = DateTime.Now,
+                    DateIn = DateTime.Now.AddDays(4),
+                    Id_Lib = 1
+                });
+            }
 
             dtx.SubmitChanges();
             MessageBox.Show("Successfully ");
 
             DialogResult = true;
+
         }
     }
 }

@@ -1,20 +1,25 @@
-﻿using LibraryWithLinq.DataAccess.SqlServer;
-using LibraryWithLinq.Models;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
+using LibraryWithLinq.Models;
+using LibraryWithLinq.DataAccess.SqlServer;
 
 namespace LibraryWithLinq.Views
 {
 
-
     public partial class BooksWindow : Window
     {
-        MyLibraryDataClassesDataContext dtx = new MyLibraryDataClassesDataContext();
         int teacherId;
+        bool hasTeacher;
 
-        public BooksWindow(int TeacherId)
+        MyLibraryDataClassesDataContext dtx = new MyLibraryDataClassesDataContext();
+
+
+        public BooksWindow(int TeacherId, bool HasTeacher)
         {
             InitializeComponent();
+
+            teacherId = TeacherId;
+            hasTeacher = HasTeacher;
 
             var result = from b in dtx.Books
                          join c in dtx.Categories on b.Id_Category equals c.Id
@@ -23,9 +28,7 @@ namespace LibraryWithLinq.Views
                          join p in dtx.Presses on b.Id_Press equals p.Id
                          select new BookDTO { Id = b.Id, BookName = b.Name, Pages = b.Pages, YearPress = b.YearPress, AuthorFirstName = a.FirstName, AuthorLastName = a.LastName, CategotyName = c.Name, Comment = b.Comment, PressName = p.Name, Quantity = b.Quantity, ThemesName = t.Name };
 
-
             myDataGrid.ItemsSource = result;
-            teacherId = TeacherId;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,9 +38,17 @@ namespace LibraryWithLinq.Views
             int? result = null;
             dtx.CheckBookQuantity(idBook, ref result);
 
-            if (result != 0)
+
+            if (result != 0 && hasTeacher == true)
             {
-                BuyBookWindow window = new BuyBookWindow(teacherId, idBook);
+                BuyBookWindow window = new BuyBookWindow(teacherId, idBook, true);
+                window.ShowDialog();
+
+                DialogResult = true;
+            }
+            else if (result != 0 && hasTeacher == false)
+            {
+                BuyBookWindow window = new BuyBookWindow(teacherId, idBook, false);
                 window.ShowDialog();
 
                 DialogResult = true;

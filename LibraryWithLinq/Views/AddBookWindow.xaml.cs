@@ -1,8 +1,8 @@
-﻿using LibraryWithLinq.DataAccess.SqlServer;
-using System;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using LibraryWithLinq.DataAccess.SqlServer;
 
 namespace LibraryWithLinq.Views
 {

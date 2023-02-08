@@ -7,9 +7,7 @@ namespace LibraryWithLinq.Views
 {
     public partial class LibsWindow : Window
     {
-
         MyLibraryDataClassesDataContext dtx = new MyLibraryDataClassesDataContext();
-
 
         public LibsWindow()
         {
@@ -24,18 +22,30 @@ namespace LibraryWithLinq.Views
 
         private void Delete_Book_Click(object sender, RoutedEventArgs e)
         {
-            var deleteItem = (myDataGrid.SelectedItem) as BookDTO;
+            if (all_radio.IsChecked == true && show_books.IsPressed==true)
+            {
+                if (myDataGrid.SelectedItem is null)
+                {
+                    MessageBox.Show("Kitablardan birini secin zehmet olmasa", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                var deleteItem = (myDataGrid.SelectedItem) as BookDTO;
 
 
-            var deletedBooks = from b in dtx.Books
-                               where b.Id == deleteItem.Id
-                               select b;
-            dtx.Books.DeleteAllOnSubmit(deletedBooks);
+                var deletedBooks = from b in dtx.Books
+                                   where b.Id == deleteItem.Id
+                                   select b;
+                dtx.Books.DeleteAllOnSubmit(deletedBooks);
 
-            dtx.SubmitChanges();
+                dtx.SubmitChanges();
 
-            MessageBox.Show("Successfully, Deleted Book", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                MessageBox.Show("Successfully, Deleted Book", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Sizin Bu Melumatlari silmeye ixtiyariniz yoxdur!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
         }
 
         private void Show_Book_Click(object sender, RoutedEventArgs e)
@@ -114,5 +124,6 @@ namespace LibraryWithLinq.Views
             else
                 MessageBox.Show("Zehmet olmasa secimlerden birini edin", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
     }
 }

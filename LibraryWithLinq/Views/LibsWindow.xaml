@@ -67,7 +67,8 @@
 
         <ScrollViewer Grid.Row="2"
                       VerticalScrollBarVisibility="Auto">
-            <DataGrid Name="myDataGrid"/>
+            <DataGrid Name="myDataGrid"
+                      />
         </ScrollViewer>
 
         <StackPanel Orientation="Horizontal"
@@ -85,6 +86,7 @@
                     Foreground="#f11712"
                     />
             <Button Content="ShowBook"
+                    Name="show_books"
                     Click="Show_Book_Click"
                     Style="{StaticResource btnStyle}"
                     FontSize="32"

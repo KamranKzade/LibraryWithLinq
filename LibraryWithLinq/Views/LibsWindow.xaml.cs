@@ -1,41 +1,40 @@
-﻿using LibraryWithLinq.DataAccess.SqlServer;
-using LibraryWithLinq.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using LibraryWithLinq.Models;
+using LibraryWithLinq.DataAccess.SqlServer;
 
 namespace LibraryWithLinq.Views
 {
-
     public partial class LibsWindow : Window
     {
+
         MyLibraryDataClassesDataContext dtx = new MyLibraryDataClassesDataContext();
 
 
         public LibsWindow()
         {
             InitializeComponent();
-
         }
 
         private void Add_Book_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Add");
+            AddBookWindow window = new AddBookWindow();
+            window.ShowDialog();
         }
 
         private void Delete_Book_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Delete");
+            var deleteItem = (myDataGrid.SelectedItem) as BookDTO;
+
+
+            var deletedBooks = from b in dtx.Books
+                               where b.Id == deleteItem.Id
+                               select b;
+            dtx.Books.DeleteAllOnSubmit(deletedBooks);
+
+            dtx.SubmitChanges();
+
+            MessageBox.Show("Successfully, Deleted Book", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
 

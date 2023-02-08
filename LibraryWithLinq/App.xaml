@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="ResouceDictionary/RadionStyle.xaml"/>
                 <ResourceDictionary Source="ResouceDictionary/LabelStyle.xaml"/>
                 <ResourceDictionary Source="ResouceDictionary/TextboxStyle.xaml"/>
+                <ResourceDictionary Source="ResouceDictionary/ComboboxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

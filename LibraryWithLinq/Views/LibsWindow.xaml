@@ -1,0 +1,97 @@
+﻿<Window x:Class="LibraryWithLinq.Views.LibsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryWithLinq.Views"
+        mc:Ignorable="d"
+        Title="LibsWindows"
+        Height="800"
+        WindowStartupLocation="CenterScreen"
+        Width="1000">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#000000" Offset="0"/>
+                <GradientStop Color="#434343" Offset="0.5"/>
+                <GradientStop Color="#ffff" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0"
+               Style="{StaticResource lblStyle}"
+               Content="Librarian Page"
+               FontSize="24"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="35">
+
+            <RadioButton Content="Teacher Books"
+                         Name="teacher_radio"
+                         Style="{StaticResource rbtStyle}"
+                         Margin="50 0">
+                <RadioButton.RenderTransform>
+                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                </RadioButton.RenderTransform>
+            </RadioButton>
+
+
+            <RadioButton Content="Student Books"
+                         Name="student_radio"
+                         Style="{StaticResource rbtStyle}"
+                         Margin="50 0">
+                <RadioButton.RenderTransform>
+                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                </RadioButton.RenderTransform>
+            </RadioButton>
+
+            <RadioButton Content="All Books"
+                         Name="all_radio"
+                         Style="{StaticResource rbtStyle}"
+                         Margin="50 0">
+                <RadioButton.RenderTransform>
+                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                </RadioButton.RenderTransform>
+            </RadioButton>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto">
+            <DataGrid Name="myDataGrid"/>
+        </ScrollViewer>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="3">
+            <Button Content="AddBook"
+                    Click="Add_Book_Click"
+                    Style="{StaticResource btnStyle}"
+                    FontSize="32"
+                    Foreground="#f11712"
+                    />
+            <Button Content="DeleteBook"
+                    Click="Delete_Book_Click"
+                    Style="{StaticResource btnStyle}"
+                    FontSize="32"
+                    Foreground="#f11712"
+                    />
+            <Button Content="ShowBook"
+                    Click="Show_Book_Click"
+                    Style="{StaticResource btnStyle}"
+                    FontSize="32"
+                    Foreground="#f11712"
+                    />
+
+        </StackPanel>
+
+    </Grid>
+</Window>

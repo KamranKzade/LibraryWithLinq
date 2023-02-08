@@ -72,6 +72,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LibsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,11 +90,16 @@
       <DependentUpon>MyLibraryDataClasses.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\BookDTO.cs" />
+    <Compile Include="Models\BookWithStudent.cs" />
+    <Compile Include="Models\BookWithTeachers.cs" />
     <Compile Include="Views\BooksWindow.xaml.cs">
       <DependentUpon>BooksWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BuyBookWindow.xaml.cs">
       <DependentUpon>BuyBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LibsWindow.xaml.cs">
+      <DependentUpon>LibsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -69,7 +69,8 @@ namespace LibraryWithLinq
 
                 if (result is 1)
                 {
-                    MessageBox.Show("Welcome");
+                    LibsWindow window = new LibsWindow();
+                    window.ShowDialog();
                 }
                 else
                 {

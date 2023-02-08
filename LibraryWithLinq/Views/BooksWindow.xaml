@@ -30,23 +30,12 @@
             <DataGrid Margin="5"
                       Name="myDataGrid"/>
         </ScrollViewer>
-        
-        <StackPanel Grid.Row="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-            <Label Content="Id"
-                   Style="{StaticResource lblStyle}"
-               />
 
-            <TextBox Name="id_txt" 
-                     Style="{StaticResource txt_style}"/>
+        <Button Style="{StaticResource btnStyle}"
+                Grid.Row="2"
+                Content="Kitabi goturmek"
+                Click="Button_Click"/>
 
-            <Button Style="{StaticResource btnStyle}"
-                    Content="Kitabi goturmek"
-                    Click="Button_Click"/>
-
-        </StackPanel>
 
     </Grid>
 </Window>

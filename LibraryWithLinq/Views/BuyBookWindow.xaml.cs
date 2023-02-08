@@ -39,7 +39,6 @@ namespace LibraryWithLinq.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             if (HasTeacher)
             {
                 dtx.T_Cards.InsertOnSubmit(new T_Card
@@ -51,8 +50,9 @@ namespace LibraryWithLinq.Views
                     DateIn = DateTime.Now.AddDays(4),
                     Id_Lib = 1
                 });
+                MessageBox.Show("Successfully Add T_Card", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
+            else if (HasTeacher is false)
             {
                 dtx.S_Cards.InsertOnSubmit(new S_Card
                 {
@@ -63,13 +63,12 @@ namespace LibraryWithLinq.Views
                     DateIn = DateTime.Now.AddDays(4),
                     Id_Lib = 1
                 });
+
+                MessageBox.Show("Successfully Add S_Card", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
-            dtx.SubmitChanges();
-            MessageBox.Show("Successfully ");
-
             DialogResult = true;
-
+            dtx.SubmitChanges();
         }
     }
 }
